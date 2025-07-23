@@ -3,29 +3,30 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 const projects = [
   {
     id: 1,
-    title: "SaaS Landing Page",
-    description: "A beautiful landing page app using React and Tailwind.",
-    image: "/projects/project1.png",
+    title: "Flash4Devs - Software Development Institute",
+    description:
+      "A dynamic, animated flashcard app designed to help developers learn programming and prepare for tech job interviews!",
+    image: "/projects/Flash4Devs.png",
     tags: ["React", "TailwindCSS", "Supabase"],
     demoUrl: "#",
     githubUrl: "#",
   },
   {
     id: 2,
-    title: "Orbit Analytics Dashboard",
+    title: "Amazon SaaS - Multi Store Manager",
     description:
-      "Interactive analytics dashboard with data visualization and filtering capabilities.",
-    image: "/projects/project2.png",
+      "Multi-tenant SaaS for managing Amazon and marketplace stores, with analytics, product and order management.",
+    image: "/projects/AmazonMultiStore.png",
     tags: ["TypeScript", "D3.js", "Next.js"],
     demoUrl: "#",
     githubUrl: "#",
   },
   {
     id: 3,
-    title: "E-commerce Platform",
+    title: "Project Costs - Budget-based",
     description:
-      "Full-featured e-commerce platform with user authentication and payment processing.",
-    image: "/projects/project3.png",
+      "The idea is to allow users to enter their projects, which are saved in a database through a local API built with JSON Server. The platform is geared toward companies that want to implement budget-based projects, assigning values to each stakeholder.",
+    image: "/projects/Costs.png",
     tags: ["React", "Node.js", "Stripe"],
     demoUrl: "#",
     githubUrl: "#",
@@ -100,7 +101,7 @@ export const ProjectsSection = () => {
           <a
             className="cosmic-button w-fit flex items-center mx-auto gap-2"
             target="_blank"
-            href="https://github.com/machadop1407"
+            href="https://github.com/YagoCastelao"
           >
             Check My Github <ArrowRight size={16} />
           </a>
