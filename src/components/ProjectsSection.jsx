@@ -8,7 +8,7 @@ const projects = [
       "A dynamic, animated flashcard app designed to help developers learn programming and prepare for tech job interviews!",
     image: "/projects/Flash4Devs.png",
     tags: ["React", "TailwindCSS", "Supabase"],
-    demoUrl: "#",
+    demoUrl: "https://front-flash4-devs.vercel.app/",
     githubUrl: "#",
   },
   {
@@ -23,12 +23,12 @@ const projects = [
   },
   {
     id: 3,
-    title: "Project Costs - Budget-based",
+    title: "Demo Store - Apple Products",
     description:
       "The idea is to allow users to enter their projects, which are saved in a database through a local API built with JSON Server. The platform is geared toward companies that want to implement budget-based projects, assigning values to each stakeholder.",
-    image: "/projects/Costs.png",
+    image: "/projects/demostore.png",
     tags: ["React", "Node.js", "Stripe"],
-    demoUrl: "#",
+    demoUrl: "https://demostore-rho.vercel.app/",
     githubUrl: "#",
   },
 ];
