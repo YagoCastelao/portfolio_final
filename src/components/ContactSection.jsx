@@ -49,11 +49,7 @@ export const ContactSection = () => {
         to_name: "Yago Castelao",
       };
 
-      await emailjs.send(
-        "service_4607px9",
-        "template_8o295lq",
-        templateParams
-      );
+      await emailjs.send("service_4607px9", "template_8o295lq", templateParams);
 
       toast({
         title: "Message sent successfully!",
@@ -88,56 +84,63 @@ export const ContactSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="space-y-8">
-            <h3 className="text-2xl font-semibold mb-6">
+            <h3 className="flex justify-start pl-50 text-2xl font-semibold mb-6 mt-16">
               {" "}
               Contact Information
             </h3>
 
-            <div className="space-y-6 justify-center">
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />{" "}
+            <div className="space-y-6 pl-50">
+              <div className="flex items-center space-x-4">
+                <div className="p-3 rounded-full bg-primary/10 flex-shrink-0">
+                  <Mail className="h-6 w-6 text-primary" />
                 </div>
-                <div>
-                  <h4 className="font-medium"> Email</h4>
+                <div className="text-start">
+                  <h4 className="font-medium text-foreground mb-1">Email</h4>
                   <a
-                    href="mailto:yago_castelau@hotmail.com"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    href="mailto:yago.castelao@icloud.com"
+                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
                     yago.castelao@icloud.com
                   </a>
                 </div>
               </div>
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Phone className="h-6 w-6 text-primary" />{" "}
+
+              <div className="flex items-center space-x-4">
+                <div className="p-3 rounded-full bg-primary/10 flex-shrink-0">
+                  <Phone className="h-6 w-6 text-primary" />
                 </div>
-                <div>
-                  <h4 className="font-medium"> Phone & Whatsapp</h4>
+                <div className="text-start">
+                  <h4 className="font-medium text-foreground mb-1">
+                    Phone & Whatsapp
+                  </h4>
                   <a
                     href="tel:+34692289484"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
                     +34 692 289 484
                   </a>
                 </div>
               </div>
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <MapPin className="h-6 w-6 text-primary" />{" "}
+
+              <div className="flex items-center space-x-4">
+                <div className="p-3 rounded-full bg-primary/10 flex-shrink-0">
+                  <MapPin className="h-6 w-6 text-primary" />
                 </div>
-                <div>
-                  <h4 className="font-medium"> Location</h4>
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
+                <div className="text-start">
+                  <h4 className="font-medium text-foreground mb-1">Location</h4>
+                  <span className="text-muted-foreground text-sm">
                     Valencia, Spain
-                  </a>
+                  </span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-8">
-              <h4 className="font-medium mb-4"> Connect With Me</h4>
-              <div className="flex space-x-4 justify-center">
+            <div className="pt-6 pl-57">
+              <h4 className="flex font-medium mb-4 justify-start pl-2">
+                {" "}
+                Connect With Me
+              </h4>
+              <div className="flex space-x-4 justify-start">
                 <a
                   href="https://www.linkedin.com/in/yagocimacastelao/"
                   target="_blank"
@@ -161,7 +164,7 @@ export const ContactSection = () => {
           </div>
 
           <div
-            className="bg-card p-8 rounded-lg shadow-xs"
+            className="bg-card p-3 rounded-lg shadow-xs"
             onSubmit={handleSubmit}
           >
             <h3 className="text-2xl font-semibold mb-6"> Send a Message</h3>
@@ -222,21 +225,22 @@ export const ContactSection = () => {
                   onChange={handleInputChange}
                   required
                   rows="6"
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary resize-none"
+                  className="w-full px-4 py-2 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary resize-none"
                   placeholder="Hello, I'd like to talk about..."
                 />
               </div>
 
+              <div className="flex items-center justify-center pb-2">
               <button
                 type="submit"
                 disabled={isSubmitting}
                 className={cn(
-                  "cosmic-button w-full flex items-center justify-center gap-2"
+                  "cosmic-button w-[200px] flex items-center justify-center gap-2"
                 )}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
                 <Send size={16} />
-              </button>
+              </button></div>
             </form>
           </div>
         </div>
