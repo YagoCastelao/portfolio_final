@@ -11,24 +11,68 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import emailjs from "@emailjs/browser";
 
 export const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-  const handleSubmit = (e) => {
+  // Inicializar EmailJS
+  useEffect(() => {
+    emailjs.init("tTpNUocwJwuhtIQGD");
+  }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    try {
+      // Configuração do EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_name: "Yago Castelao",
+      };
+
+      await emailjs.send(
+        "service_4607px9",
+        "template_8o295lq",
+        templateParams
+      );
+
       toast({
-        title: "Message sent!",
+        title: "Message sent successfully!",
         description: "Thank you for your message. I'll get back to you soon.",
       });
+
+      // Limpar formulário
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      toast({
+        title: "Error sending message",
+        description:
+          "Something went wrong. Please try again or contact me directly.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
@@ -60,7 +104,7 @@ export const ContactSection = () => {
                     href="mailto:yago_castelau@hotmail.com"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    yago_castelau@hotmail.com
+                    yago.castelao@icloud.com
                   </a>
                 </div>
               </div>
@@ -69,7 +113,7 @@ export const ContactSection = () => {
                   <Phone className="h-6 w-6 text-primary" />{" "}
                 </div>
                 <div>
-                  <h4 className="font-medium"> Phone</h4>
+                  <h4 className="font-medium"> Phone & Whatsapp</h4>
                   <a
                     href="tel:+34692289484"
                     className="text-muted-foreground hover:text-primary transition-colors"
@@ -103,7 +147,10 @@ export const ContactSection = () => {
                 <a href="https://x.com/yagocastelau" target="_blank">
                   <Twitter />
                 </a>
-                <a href="https://www.instagram.com/yagocastelao" target="_blank">
+                <a
+                  href="https://www.instagram.com/yagocastelao"
+                  target="_blank"
+                >
                   <Instagram />
                 </a>
                 <a href="https://github.com/YagoCastelao" target="_blank">
@@ -132,6 +179,8 @@ export const ContactSection = () => {
                   type="text"
                   id="name"
                   name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
                   placeholder="Yago Cima Castelao..."
@@ -150,9 +199,11 @@ export const ContactSection = () => {
                   type="email"
                   id="email"
                   name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="yago_castelau@hotmail.com"
+                  placeholder="yago.castelao@icloud.com"
                 />
               </div>
 
@@ -167,7 +218,10 @@ export const ContactSection = () => {
                 <textarea
                   id="message"
                   name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   required
+                  rows="6"
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary resize-none"
                   placeholder="Hello, I'd like to talk about..."
                 />
